@@ -63,6 +63,7 @@ with detection_graph.as_default():
         detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
         detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
         num_detections = detection_graph.get_tensor_by_name('num_detections:0')
+        counter = 0
         for image_path in TEST_IMAGE_PATHS:
             image = Image.open(image_path)
             # the array based representation of the image will be used later in order to prepare the
@@ -91,5 +92,5 @@ with detection_graph.as_default():
               category_index,
               use_normalized_coordinates=True,
               line_thickness=8)
-            #plt.legend()
-            plt.savefig(image_path)
+            plt.savefig("%s.png" % counter)
+            counter += 1
