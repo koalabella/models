@@ -18,11 +18,15 @@ eggs/
 lib/
 lib64/
 parts/
+protos/
+research/object_detection/models/train
+research/object_detection/models/faster_rcnn_resnet_50/frozen_out/
 sdist/
 var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.record
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
