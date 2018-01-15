@@ -30,14 +30,16 @@ def create_tf_example(example):
                  # (1 per box)
     classes_text = [] # List of string class name of bounding box (1 per box)
     classes = [] # List of integer class id of bounding box (1 per box)
-
-    for box in example['boxes']:
-        xmins.append(float(box['xmin'] / width))
-        xmaxs.append(float((box['xmax'] + box['x_width']) / width))
-        ymins.append(float(box['ymin'] / height))
-        ymaxs.append(float((box['ymax'] + box['y_height']) / width))
-        classes_text.append(box['class'].encode())
-        classes.append(int(LABEL_DICT[box['class']]))
+    try:
+        for box in example['boxes']:
+            xmins.append(float(box['xmin'] / width))
+            xmaxs.append(float((box['xmax'] + box['x_width']) / width))
+            ymins.append(float(box['ymin'] / height))
+            ymaxs.append(float((box['ymax'] + box['y_height']) / width))
+            classes_text.append(box['class'].encode())
+            classes.append(int(LABEL_DICT[box['class']]))
+    except:
+        print(example)
 
     tf_example = tf.train.Example(features=tf.train.Features(feature={
             'image/height': dataset_util.int64_feature(height),

@@ -82,7 +82,7 @@ def main(_):
     writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
     
     # BOSCH
-    INPUT_YAML = "/home/ubuntu/hdd/test_data/train.yaml"
+    INPUT_YAML = "/home/ubuntu/hdd/test_data/train_box.yaml"
     examples = yaml.load(open(INPUT_YAML, 'rb').read())
 
     #examples = examples[:10]  # for testing
